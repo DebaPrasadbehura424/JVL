@@ -2,7 +2,8 @@ import java.util.*;
 //note java only supports 32 bit engine means 31 range must present other wise 0
 class RotateNumber{
   public static void main(String args[]){
-   Scanner sc= new Scanner(System.in);
+   @SuppressWarnings("resource")
+Scanner sc= new Scanner(System.in);
    int n =sc.nextInt();
    int k=sc.nextInt();
    ArrayList<Integer>arr= new ArrayList<>();
@@ -19,46 +20,6 @@ class RotateNumber{
    }
    
  k=k%arr.size()-1;
-
-
-//vowel check
-
-public class Main {
-    public static void main(String[] args) {
-        String str = "Hello World";
-        int count = 0;
-        for (char c : str.toCharArray()) {
-            if ("AEIOUaeiou".indexOf(c) != -1)
-                count++;
-        }
-        System.out.println("Number of vowels: " + count);
-    }
-}
-
-
-//gcd
-
-public class Main {
-    public static void main(String[] args) {
-        int a = 56, b = 98;
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        System.out.println("GCD is: " + a);
-    }
-}
-
- 
-
-   
-   
-   
-
-   
-
-    
 
    }   
 }

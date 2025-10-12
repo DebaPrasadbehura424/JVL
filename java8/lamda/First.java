@@ -15,10 +15,10 @@ public class First {
             }
         };
         s3.sayHello();
-
         // with lamda
         Sec s4 = () -> System.out.println("all are done");
         s4.sayHello();
+        
     }
 
 }

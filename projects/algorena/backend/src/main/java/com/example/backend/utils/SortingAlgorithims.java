@@ -2,7 +2,7 @@ package com.example.backend.utils;
 
 import java.util.List;
 
-public class SortingAlgorithims<T> {
+public class SortingAlgorithims<E> {
 
     public static <E extends Comparable<E>> String bubbleSort(List<E> data) {
         int n = data.size();

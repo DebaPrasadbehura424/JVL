@@ -7,8 +7,8 @@ function Sorting() {
   const [secondSearch, setSecondSearch] = useState("");
   const [input, setInput] = useState("");
   const [type, setType] = useState("");
-  const [firstResult, setFirstResult] = useState(""); // ✅ New state for first sorted result
-  const [secondResult, setSecondResult] = useState(""); // ✅ New state for second sorted result
+  const [firstResult, setFirstResult] = useState(""); 
+  const [secondResult, setSecondResult] = useState("");
 
   const sortingList = [
     { name: "QuickSort" },
@@ -35,8 +35,8 @@ function Sorting() {
       .post("http://localhost:8080/sorting/calculate1", payload)
       .then((res) => {
         console.log(res.data);
-        setFirstResult(res.data.firstSorted); // ✅ Set result in state
-        setSecondResult(res.data.secondSorted); // ✅ Set result in state
+        setFirstResult(res.data.firstSorted);
+        setSecondResult(res.data.secondSorted);
       })
       .catch((err) => {
         console.log(err);
@@ -64,6 +64,7 @@ function Sorting() {
             setSearch={setType}
             filterSearch={""}
             sortingList={typeList}
+            tab={"Sorting"}
           />
         </div>
 
@@ -100,6 +101,7 @@ function Sorting() {
             setSearch={setFirstSearch}
             sortingList={sortingList}
             filterSearch={secondSearch}
+            tab={"Sorting"}
           />
 
           {/* ✅ Show first sorted result */}
@@ -123,6 +125,7 @@ function Sorting() {
             setSearch={setSecondSearch}
             sortingList={sortingList}
             filterSearch={firstSearch}
+            tab={"Sorting"}
           />
 
           {/* ✅ Show second sorted result */}

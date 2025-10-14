@@ -1,5 +1,6 @@
 import React from "react";
 import Sorting from "../utils/Sorting";
+import Searching from "../utils/Searching";
 
 function BattleConnection({ selectText }) {
   const renderComponents = (selectedTopic) => {
@@ -8,12 +9,7 @@ function BattleConnection({ selectText }) {
         return <Sorting />;
 
       case "Searching":
-        return (
-          <p>
-            Searching is about finding an element in a data structure. Examples
-            include Linear Search and Binary Search.
-          </p>
-        );
+        return <Searching />;
 
       case "Recursion":
         return (

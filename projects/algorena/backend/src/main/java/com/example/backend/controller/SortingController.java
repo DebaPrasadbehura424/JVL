@@ -79,4 +79,10 @@ public class SortingController {
 
                 return ResponseEntity.badRequest().body("Unsupported type: " + type);
         }
+
+        @PostMapping("/steps")
+        public String postMethodName(@RequestBody String entity) {
+                return entity;
+        }
+
 }

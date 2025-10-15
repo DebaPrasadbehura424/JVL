@@ -2,6 +2,7 @@ import React from "react";
 import Sorting from "../utils/Sorting";
 import Searching from "../utils/Searching";
 import TreeTaversal from "../utils/TreeTaversal";
+import PolishNotation from "../utils/PolishNotation";
 
 function BattleConnection({ selectText }) {
   const renderComponents = (selectedTopic) => {
@@ -31,6 +32,8 @@ function BattleConnection({ selectText }) {
 
       case "Tree Traversal":
         return <TreeTaversal />;
+      case "Polish Notation":
+        return <PolishNotation />;
 
       case "Valid Parenthesis":
         return (

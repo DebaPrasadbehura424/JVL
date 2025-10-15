@@ -1,20 +1,23 @@
 package com.example.backend.model;
+
 import java.util.List;
 
-public class SortingModel<T> {
+public class OprationalModel<T> {
     private String type;
     private String firstSearch;
+    private int searchElement;
     private String secondSearch;
     private List<T> input;
 
-    public SortingModel() {
+    public OprationalModel() {
     }
 
-    public SortingModel(String type, String firstSearch, String secondSearch, List<T> input) {
+    public OprationalModel(String type, String firstSearch, String secondSearch, List<T> input, int searchElement) {
         this.type = type;
         this.firstSearch = firstSearch;
         this.secondSearch = secondSearch;
         this.input = input;
+        this.searchElement = searchElement;
     }
 
     public String getType() {
@@ -39,6 +42,14 @@ public class SortingModel<T> {
 
     public void setSecondSearch(String secondSearch) {
         this.secondSearch = secondSearch;
+    }
+
+    public int getSearchElement() {
+        return searchElement;
+    }
+
+    public void setSearchElement(int searchElement) {
+        this.searchElement = searchElement;
     }
 
     public List<T> getInput() {

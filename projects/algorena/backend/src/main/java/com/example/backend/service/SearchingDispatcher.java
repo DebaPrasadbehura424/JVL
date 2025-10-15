@@ -2,18 +2,17 @@ package com.example.backend.service;
 
 import java.util.List;
 
-import com.example.backend.utils.SearchingAlgorithims;
+import com.example.backend.utils.SearchAlgorithims;
 
 public class SearchingDispatcher<T extends Comparable<T>> {
-    public String searchCompuet(String algorithm, List<T> data) {
+    public String searchCompute(String algorithm, List<T> data, T elem) {
         String ans = "";
         switch (algorithm.toLowerCase()) {
             case "binarysearch":
-
-                ans = SearchingAlgorithims.binarySearch(data);
+                ans = SearchAlgorithims.binarySearch(data, elem);
                 break;
             case "linearsearch":
-                ans = SearchingAlgorithims.linearSearch(data);
+                ans = SearchAlgorithims.linearSearch(data, elem);
                 break;
 
             default:

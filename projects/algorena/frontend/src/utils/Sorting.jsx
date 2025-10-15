@@ -7,7 +7,7 @@ function Sorting() {
   const [secondSearch, setSecondSearch] = useState("");
   const [input, setInput] = useState("");
   const [type, setType] = useState("");
-  const [firstResult, setFirstResult] = useState(""); 
+  const [firstResult, setFirstResult] = useState("");
   const [secondResult, setSecondResult] = useState("");
 
   const sortingList = [
@@ -23,7 +23,7 @@ function Sorting() {
   const typeList = [{ name: "Integer" }, { name: "Character" }];
 
   const handleSubmit = async () => {
-    const inputArray = input.split(",").map((item) => item.trim()); // trim to remove spaces
+    const inputArray = input.split(",").map((item) => item.trim());
     const payload = {
       type: type,
       input: inputArray,
@@ -34,7 +34,6 @@ function Sorting() {
     await axios
       .post("http://localhost:8080/sorting/calculate1", payload)
       .then((res) => {
-        console.log(res.data);
         setFirstResult(res.data.firstSorted);
         setSecondResult(res.data.secondSorted);
       })

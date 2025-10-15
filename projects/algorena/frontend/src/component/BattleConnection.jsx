@@ -1,6 +1,7 @@
 import React from "react";
 import Sorting from "../utils/Sorting";
 import Searching from "../utils/Searching";
+import TreeTaversal from "../utils/TreeTaversal";
 
 function BattleConnection({ selectText }) {
   const renderComponents = (selectedTopic) => {
@@ -29,12 +30,7 @@ function BattleConnection({ selectText }) {
         );
 
       case "Tree Traversal":
-        return (
-          <p>
-            Tree traversal refers to visiting all nodes in a tree. Types:
-            Inorder, Preorder, Postorder, and Level Order.
-          </p>
-        );
+        return <TreeTaversal />;
 
       case "Valid Parenthesis":
         return (

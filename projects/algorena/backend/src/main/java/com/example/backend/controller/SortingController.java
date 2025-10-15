@@ -3,7 +3,7 @@ package com.example.backend.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.backend.model.SortingModel;
+import com.example.backend.model.OprationalModel;
 import com.example.backend.service.SortingDispatcher;
 
 import java.util.ArrayList;
@@ -22,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class SortingController {
 
         @PostMapping("/calculate1")
-        public ResponseEntity<?> computeSorting(@RequestBody SortingModel<?> sortingModel) {
-                String type = sortingModel.getType();
-                String firstSorting = sortingModel.getFirstSearch();
-                String secSorting = sortingModel.getSecondSearch();
-                List<?> inputs = sortingModel.getInput();
+        public ResponseEntity<?> computeSorting(@RequestBody OprationalModel<?> oprationalModel) {
+                String type = oprationalModel.getType();
+                String firstSorting = oprationalModel.getFirstSearch();
+                String secSorting = oprationalModel.getSecondSearch();
+                List<?> inputs = oprationalModel.getInput();
 
                 if (type == null || firstSorting == null || secSorting == null || inputs == null) {
                         return ResponseEntity.badRequest().body("Missing required fields in the request.");

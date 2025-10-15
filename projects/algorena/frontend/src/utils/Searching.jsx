@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SelectOption from "../component/SelectOption";
+import axios from "axios";
 
 function Searching() {
   const [firstSearch, setFirstSearch] = useState("");
@@ -7,18 +8,33 @@ function Searching() {
   const [input, setInput] = useState("");
   const [type, setType] = useState("");
   const [firstResult, setFirstResult] = useState("");
+  const [searchElem, setSearchElem] = useState("");
   const [secondResult, setSecondResult] = useState("");
   const handleSubmit = async () => {
+    const inputArray = input.split(",").map((item) => item.trim());
     const payload = {
       firstSearch: firstSearch,
       secondSearch: secondSearch,
-      input: input,
+      input: inputArray,
       type: type,
+      searchElem: searchElem,
     };
-    console.log(payload);
+
+    await axios
+      .post("http://localhost:8080/searching/calculate1", payload)
+      .then((res) => {
+        setFirstResult(res.data.firstSeachResult);
+        setSecondResult(res.data.secondSearchResult);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(
+          "Error: Could not fetch sorting results. Check console for details."
+        );
+      });
   };
 
-  const searchList = [{ name: "LinearSearch" }, { name: "BinarySerach" }];
+  const searchList = [{ name: "LinearSearch" }, { name: "BinarySearch" }];
   const typeList = [{ name: "Integer" }, { name: "Character" }];
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4">
@@ -46,7 +62,8 @@ function Searching() {
           <div className="mb-4">
             <p className="text-sm text-gray-600 mb-1">
               <strong>Note:</strong> Separate each element with a comma (`,`),
-              do not add a comma at the end.
+              do not add a comma at the end.don't worry for orders it will
+              managed
             </p>
             <label className="block text-gray-700 font-medium mb-1">
               Insert Your Data
@@ -56,6 +73,17 @@ function Searching() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="e.g. 1,2,3 or a,b,c"
+              className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+
+            <label className="block text-gray-700 font-medium mb-1">
+              Search element/chracter
+            </label>
+            <input
+              type="text"
+              value={searchElem}
+              onChange={(e) => setSearchElem(e.target.value)}
+              placeholder="put searching element"
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>

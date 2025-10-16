@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import SelectOption from "../component/SelectOption";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import axios from "axios";
 function PolishNotation() {
   const [expr, setExpr] = useState("");
   const [leftType, setLeftType] = useState("Infix Notation");
   const [rightType, setRightType] = useState("Prefix Notation");
 
-  const [converted, setConverted] = useState(false);
-  const [evaluated, setEvaluated] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [converted, setConverted] = useState("");
+  const [evaluated, setEvaluated] = useState("");
+  const [checked, setChecked] = useState(true);
 
   const myList = [
     { name: "Infix Notation" },
@@ -16,18 +17,54 @@ function PolishNotation() {
     { name: "Postfix Notation" },
   ];
 
-  const handleCheck = () => {};
+  const handleCheck = async () => {
+    // await axios
+    //   .post("")
+    //   .then((res) => {
+    //     console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+  };
   const handleAlternate = () => {
     setLeftType(rightType);
     setRightType(leftType);
   };
 
-  const handleConvert = () => {
-    setConverted(`Converted version of: ${expr || "N/A"}`);
+  const handleConvert = async () => {
+    const payload = {
+      type: expr,
+      firstSearch: leftType,
+      secondSearch: rightType,
+    };
+
+    await axios
+      .post("http://localhost:8080/polish/calculate1/convert", payload)
+      .then((res) => {
+        setConverted(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const handleEvaluate = () => {
-    setEvaluated(`Evaluation result of: ${expr || "N/A"}`);
+  const handleEvaluate = async () => {
+    const payload = {
+      type: expr,
+      firstSearch: leftType,
+      secondSearch: rightType,
+    };
+    console.log(payload);
+
+    await axios
+      .post("http://localhost:8080/polish/calculate1/evaluate", payload)
+      .then((res) => {
+        setEvaluated(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -100,12 +137,21 @@ function PolishNotation() {
 
         {/* Result Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          <div className="border border-[#0e0e0e]/30 rounded-md p-3">
-            <h4 className="font-semibold text-[#0e0e0e]">
+          <div
+            className={`border  ${
+              converted != "" ? "border-green-500 " : "border-[#0e0e0e]/30 "
+            } rounded-md p-3`}
+          >
+            <h4
+              className={`font-semibold ${
+                converted != "" ? "text-green-500 " : "text-[#0e0e0e]"
+              } `}
+            >
               Converted Expression:
             </h4>
             <p className="mt-1 text-[#0e0e0e]">{converted}</p>
           </div>
+
           <div className="border border-[#0e0e0e]/30 rounded-md p-3">
             <h4 className="font-semibold text-[#0e0e0e]">Evaluation Result:</h4>
             <p className="mt-1 text-[#0e0e0e]">{evaluated}</p>

@@ -3,6 +3,7 @@ import Sorting from "../utils/Sorting";
 import Searching from "../utils/Searching";
 import TreeTaversal from "../utils/TreeTaversal";
 import PolishNotation from "../utils/PolishNotation";
+import ValidParenthesis from "../utils/ValidParenthesis";
 
 function BattleConnection({ selectText }) {
   const renderComponents = (selectedTopic) => {
@@ -36,12 +37,7 @@ function BattleConnection({ selectText }) {
         return <PolishNotation />;
 
       case "Valid Parenthesis":
-        return (
-          <p>
-            Check if a string has valid open-close parentheses using stacks.
-            Important in parsing expressions.
-          </p>
-        );
+        return <ValidParenthesis />;
 
       case "Expression Evaluation":
         return (

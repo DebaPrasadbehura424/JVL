@@ -5,16 +5,12 @@ function BattleField() {
   const dsaTopics = [
     "Sorting",
     "Searching",
-    "Recursion",
     "Bitwise Operations",
     "Tree Traversal",
     "Valid Parenthesis",
-    "Expression Evaluation",
     "Polish Notation",
     "Stacks & Queues",
     "Graphs (DFS/BFS)",
-    "Dynamic Programming",
-    "Backtracking",
   ];
 
   const [selectedIndex, setSelectedIndex] = useState(0);

@@ -86,6 +86,7 @@ public class PollishAlgorithims {
 
     }
 
+    // this is not ready yet
     public String postfix(String expression, String secnotation) {
         Stack<String> st = new Stack<>();
         if (secnotation.equals("")) {
@@ -101,7 +102,8 @@ public class PollishAlgorithims {
         Stack<String> stack = new Stack<>();
         for (int i = expression.length() - 1; i >= 0; i--) {
             char ch = expression.charAt(i);
-
+            if (ch == ' ')
+                continue;
             if (Character.isLetterOrDigit(ch)) {
                 stack.push(String.valueOf(ch));
             } else {

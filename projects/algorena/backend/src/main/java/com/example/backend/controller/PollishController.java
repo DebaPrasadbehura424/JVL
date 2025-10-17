@@ -24,18 +24,54 @@ public class PollishController {
     }
 
     @PostMapping("/calculate1/evaluate")
-    public String computePolishEvaluate(@RequestBody OprationalModel oprationalModel) {
+    public int computePolishEvaluate(@RequestBody OprationalModel oprationalModel) {
         String expression = oprationalModel.getType();
         String firstNotation = oprationalModel.getFirstSearch();
-        String secondNotation = oprationalModel.getSecondSearch();
-        if (expression.equals("")) {// if infix is there
-
-        } else if (expression.equals("")) {// if postfix convert it
-
-        } else {// if postfix convert to infix
+        PollishAlgorithims pollishAlgorithims = new PollishAlgorithims();
+        System.out.println(firstNotation);
+        System.out.println(expression);
+        if (firstNotation.equals("Prefix Notation")) {
+            expression = pollishAlgorithims.prefix(expression, "Infix Notation");
+            System.out.println(expression);
+        } else if (expression.equals("Postfix Notation")) {
+            expression = pollishAlgorithims.postfix(expression, "Infix Notation");
 
         }
-        return "";
+        int total = 0;
+        int lastTerm = 0;
+        int num = 0;
+        char op = '+';
+
+        for (int i = 0; i < expression.length(); i++) {
+            char ch = expression.charAt(i);
+            if (ch == ' ')
+                continue;
+            if (Character.isDigit(ch)) {
+                num = num * 10 + (ch - '0');
+            }
+
+            if (!Character.isDigit(ch) || i == expression.length() - 1) { // <-- FIX
+                if (op == '+') {
+                    total += lastTerm;
+                    lastTerm = num;
+                } else if (op == '-') {
+                    total += lastTerm;
+                    lastTerm = -num;
+                } else if (op == '*') {
+                    lastTerm *= num;
+                } else if (op == '/') {
+                    lastTerm /= num;
+                } else if (op == '%') {
+                    lastTerm %= num;
+                }
+
+                op = ch;
+                num = 0;
+            }
+        }
+
+        total += lastTerm;
+        return total;
 
     }
 

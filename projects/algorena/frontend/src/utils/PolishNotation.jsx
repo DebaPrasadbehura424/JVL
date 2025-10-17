@@ -18,6 +18,7 @@ function PolishNotation() {
   ];
 
   const handleCheck = async () => {
+    alert("dont have this features now");
     // await axios
     //   .post("")
     //   .then((res) => {
